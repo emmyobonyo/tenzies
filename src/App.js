@@ -17,14 +17,16 @@ function App() {
     return newDice
   }
 
-  function rollDice(){
-    setDice(allNewDice())
-  }
+  function rollDice() {
+    return setDice(dice => dice.map(die => {
+      return die.isHeld == true ? die : {...die, value: Math.ceil(Math.random() * 6)}
+    }))
+}
 
   function holdDice(id){
      return setDice(dice => dice.map(die => {
-             return die.id === id ? { ...die, isHeld: !die.isHeld} : die
-            }))
+      return die.id === id ? { ...die, isHeld: !die.isHeld} : die
+    }))
   }
 
   const diceElements = dice.map(die => (<Dice key={die.id} id={die.id} value={die.value} held={die.isHeld} holdDice={() => holdDice(die.id)}/>))
