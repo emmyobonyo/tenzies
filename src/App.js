@@ -1,6 +1,7 @@
 import React from 'react'
 import Dice from './components/Dice';
 import {nanoid} from 'nanoid';
+import Confetti from "react-confetti"
 import './App.css';
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
           <div className="dice-container">
             {diceElements}
           </div>
-          <button className="roll-dice" onClick={rollDice}>Roll</button>
+          <button className="roll-dice" onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
         </main>
     </div>
   );
